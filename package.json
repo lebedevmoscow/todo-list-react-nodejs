@@ -1,0 +1,19 @@
+{
+  "name": "todo-list-react-nodejs",
+  "version": "1.0.0",
+  "description": "One of the previous mine todo-list, but now with includes database mongodb and nodejs as a backend language",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LebeDEVBoris/todo-list-react-nodejs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LebeDEVBoris/todo-list-react-nodejs/issues"
+  },
+  "homepage": "https://github.com/LebeDEVBoris/todo-list-react-nodejs#readme"
+}
