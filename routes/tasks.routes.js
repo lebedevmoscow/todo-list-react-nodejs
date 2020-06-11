@@ -28,7 +28,6 @@ router.post('/loadtask', async (req, res) => {
 
 router.post('/removetask/:id', async (req, res) => {
     try {
-        console.log('id', req.params.id)
         const UD = await JSON.parse(req.body.userData)
         const candidate = await User.findOne({ login: UD.login })
 
@@ -39,6 +38,44 @@ router.post('/removetask/:id', async (req, res) => {
         res.status(200).json(r)
     } catch (e) {
         console.log('removetask catch e', e.message || e)
+    }
+})
+
+router.post('/selectimportant/:id', async (req, res) => {
+    try {
+        const UD = await JSON.parse(req.body.userData)
+        const candidate = await User.findOne({ login: UD.login })
+        const candidateTasks = candidate.tasks.concat()
+
+        candidateTasks.filter((e) => {
+            if (e._id.toString() == req.params.id) {
+                e.important = !e.important
+            }
+        })
+
+        await User.updateOne({ tasks: candidateTasks })
+        res.status(200).json(candidateTasks)
+    } catch (e) {
+        console.log('selectimportant e', e.message || e)
+    }
+})
+
+router.post('/selectdone/:id', async (req, res) => {
+    try {
+        const UD = await JSON.parse(req.body.userData)
+        const candidate = await User.findOne({ login: UD.login })
+        const candidateTasks = candidate.tasks.concat()
+
+        candidateTasks.filter((e) => {
+            if (e._id.toString() == req.params.id) {
+                e.done = !e.done
+            }
+        })
+
+        await User.updateOne({ tasks: candidateTasks })
+        res.status(200).json(candidateTasks)
+    } catch (e) {
+        console.log('selectdone e', e.message || e)
     }
 })
 

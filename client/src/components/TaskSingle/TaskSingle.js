@@ -26,13 +26,13 @@ export const TaskSingle = ({
                     </div>
                     <div
                         className="tasksingle__exclamination-btn tasksingle__btn-single"
-                        onClick={() => onMarkAsImportant(task.id)}
+                        onClick={() => onMarkAsImportant(task._id)}
                     >
                         <i className="fa fa-exclamation"></i>
                     </div>
                     <div
                         className="tasksingle__done-btn tasksingle__btn-single"
-                        onClick={() => onMarkAsDone(task.id)}
+                        onClick={() => onMarkAsDone(task._id)}
                     >
                         <i className="fa fa-check"></i>
                     </div>

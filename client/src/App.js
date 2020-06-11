@@ -40,7 +40,6 @@ const App = () => {
             }
         }
         loadData()
-        console.log('Load')
     }, [auth])
 
     const setNewFilters = (mode) => {
@@ -56,7 +55,7 @@ const App = () => {
         const data = await request('/api/tasks/loadtask', 'POST', {
             userData: localStorage.getItem('userData'),
         })
-        //console.log('data', data.candidateTasks)
+
         setTodos(data.candidateTasks)
         setLoading(false)
     }
@@ -72,27 +71,25 @@ const App = () => {
             userData: localStorage.getItem('userData'),
             text: newElement.text,
         })
-        console.log('res', res)
         todosClone.push(res)
         setTodos(todosClone)
     }
 
-    const markAsImportant = (id) => {
-        const todosClone = todos.concat()
-        const findRes = todosClone.find((e) => e.id === id)
-        if (findRes) {
-            todosClone[id].important = !todosClone[id].important
-        }
-        setTodos(todosClone)
+    const markAsImportant = async (id) => {
+        const userData = localStorage.getItem('userData')
+        const res = await request(`/api/tasks/selectimportant/${id}`, 'POST', {
+            userData,
+        })
+        setTodos(res)
     }
 
-    const markAsDone = (id) => {
-        const todosClone = todos.concat()
-        const findRes = todos.find((e) => e.id === id)
-        if (findRes) {
-            todosClone[id].done = !todosClone[id].done
-        }
-        setTodos(todosClone)
+    const markAsDone = async (id) => {
+        const userData = localStorage.getItem('userData')
+        const res = await request(`/api/tasks/selectdone/${id}`, 'POST', {
+            userData,
+        })
+
+        setTodos(res)
     }
 
     const setath = (bool) => {
@@ -137,7 +134,7 @@ const App = () => {
 
     const content = (
         <>
-            <Header />
+            <Header todos={todos} />
             <SearchBar
                 onSetFilters={setNewFilters}
                 onSearchWordChange={onSearchWordChange}
@@ -176,7 +173,7 @@ const App = () => {
                         timeout={30000} //3 secs
                     />
                 )}
-                {token && content}
+                {!loading && token && content}
             </div>
             {error !== '' && <Error error={error} />}
         </AuthContext.Provider>
