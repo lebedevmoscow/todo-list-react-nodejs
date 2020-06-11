@@ -1,14 +1,8 @@
-import React, { useState } from 'react'
-import { SearchBarModelProps } from './SearchBar.model'
+import React from 'react'
 import './SearchBar.sass'
 
-export const SearchBar: React.FC<SearchBarModelProps> = ({
-    onSetFilters,
-    onSearchWordChange,
-}) => {
-    const [baseClassName, setBaseClassName] = useState('common-btn')
-
-    const inputHandler = (e: React.FormEvent<HTMLInputElement>) => {
+export const SearchBar = ({ onSetFilters, onSearchWordChange }) => {
+    const inputHandler = (e) => {
         onSearchWordChange(e.currentTarget.value)
     }
 

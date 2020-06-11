@@ -1,13 +1,10 @@
-import React, { useEffect, useState, ChangeEvent } from 'react'
+import React, { useState, ChangeEvent } from 'react'
 import './TaskBar.sass'
 
 // Custom components
 import { TaskSingle } from './../TaskSingle/TaskSingle'
 
-// Interfaces
-import { TaskBarPropsModel } from './TaskBar.model'
-
-export const TaskBar: React.FC<TaskBarPropsModel> = ({
+export const TaskBar = ({
     todos,
     onAddNewElem,
     onMarkAsImportant,
@@ -17,13 +14,13 @@ export const TaskBar: React.FC<TaskBarPropsModel> = ({
     const [inputValue, setInputValue] = useState('')
 
     // Updating local state on every changing input
-    const inputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputHandler = (e) => {
         e.preventDefault()
         setInputValue(e.target.value)
     }
 
     // Handling Enter pressing
-    const keyPressHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const keyPressHandler = (e) => {
         if (e.key === 'Enter' && inputValue !== '') {
             e.preventDefault()
             onAddNewElem(inputValue)
@@ -60,7 +57,10 @@ export const TaskBar: React.FC<TaskBarPropsModel> = ({
                         onChange={inputHandler}
                     ></input>
                 </form>
-                <div className="taskbar__addtask-btn" onClick={addTaskHandler}>
+                <div
+                    className="taskbar__addtask-btn tst"
+                    onClick={addTaskHandler}
+                >
                     Add task
                 </div>
             </div>

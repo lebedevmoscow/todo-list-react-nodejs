@@ -1,7 +1,7 @@
 import React from 'react'
 import './Footer.sass'
 
-export const Footer: React.FC = () => {
+export const Footer = () => {
     return (
         <div className="footer">
             <div className="footer__copyright">

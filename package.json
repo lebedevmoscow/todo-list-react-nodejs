@@ -1,19 +1,41 @@
 {
-  "name": "todo-list-react-nodejs",
-  "version": "1.0.0",
-  "description": "One of the previous mine todo-list, but now with includes database mongodb and nodejs as a backend language",
-  "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LebeDEVBoris/todo-list-react-nodejs.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LebeDEVBoris/todo-list-react-nodejs/issues"
-  },
-  "homepage": "https://github.com/LebeDEVBoris/todo-list-react-nodejs#readme"
+    "name": "todo-list-react-nodejs",
+    "version": "1.0.0",
+    "description": "One of the previous mine todo-list, but now with includes database mongodb and nodejs as a backend language",
+    "main": "app.js",
+    "scripts": {
+        "server": "nodemon app.js",
+        "client:install": "npm install --prefix client",
+        "client:build": "npm run build --prefix client",
+        "client": "npm run start --prefix client",
+        "dev": "cross-env NODE_ENV=development concurrently \"npm run server\" \"npm run client\"",
+        "start": "cross-env NODE_ENV=production node app.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LebeDEVBoris/todo-list-react-nodejs.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/LebeDEVBoris/todo-list-react-nodejs/issues"
+    },
+    "homepage": "https://github.com/LebeDEVBoris/todo-list-react-nodejs#readme",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "config": "^3.3.1",
+        "express": "^4.17.1",
+        "express-validator": "^6.5.0",
+        "jsonwebtoken": "^8.5.1",
+        "materialize-css": "^1.0.0-rc.2",
+        "mongoose": "^5.9.18",
+        "react-loader-spinner": "^3.1.14",
+        "shortid": "^2.2.15"
+    },
+    "devDependencies": {
+        "concurrently": "^5.2.0",
+        "cross-env": "^7.0.2",
+        "nodemon": "^2.0.4"
+    }
 }

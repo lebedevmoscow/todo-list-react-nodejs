@@ -1,10 +1,7 @@
 import React from 'react'
 import './TaskSingle.sass'
 
-// Interfaces
-import { TaskSinglePropsModel } from './TaskSingle.model'
-
-export const TaskSingle: React.FC<TaskSinglePropsModel> = ({
+export const TaskSingle = ({
     task,
     onMarkAsImportant,
     onMarkAsDone,
@@ -23,7 +20,7 @@ export const TaskSingle: React.FC<TaskSinglePropsModel> = ({
                 <div className="tasksingle__btns">
                     <div
                         className="tasksingle__trash-btn tasksingle__btn-single"
-                        onClick={() => onDeleteTodo(task.id)}
+                        onClick={() => onDeleteTodo(task._id)}
                     >
                         <i className="fa fa-trash"></i>
                     </div>
